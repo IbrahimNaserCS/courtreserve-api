@@ -1,6 +1,6 @@
 1. Set up Prisma (Done)
 2. Define models (Done)
-3. Set up Express / Node js
+3. Set up Express / Node js (Done)
 4. Define routes
 5. Set up authentication with JWT
 6. Set up routes for actual data
