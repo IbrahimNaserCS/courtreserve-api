@@ -1,4 +1,4 @@
-1. Set up Prisma
+1. Set up Prisma (Done)
 2. Define models
 3. Set up Express / Node js
 4. Define routes
