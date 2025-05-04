@@ -13,3 +13,25 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  username String @unique
+  password String
+  reservations Reservation[]
+}
+
+model Court {
+  id Int @default(autoincrement()) @unique
+  reservations Reservation[]
+}
+
+model Reservation {
+  id Int @default(autoincrement()) @unique
+  court Court @relation(fields: [courtId], references: [id])
+  courtId Int @unique
+  user User @relation(fields: [username], references: [username])
+  username String @unique
+  date String
+  block String
+  @@unique([date, block])
+}
