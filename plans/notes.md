@@ -23,3 +23,16 @@ There are going to be different entities. There is a user with a username, email
 - React frontend
 - Prisma with Postresql for database
 - Deploy front end to Vercel, backend to Railway
+# Notes on database / schema
+- User
+  - username (unique key)
+  - password (hashed with bcrypt)
+  - reservations 
+- Court 
+  - id
+  - available time slots
+- Reservation
+  - court id
+  - reservation id
+  - user id
+  - time slot
