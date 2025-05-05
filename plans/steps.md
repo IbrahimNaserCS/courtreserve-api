@@ -1,8 +1,8 @@
 1. Set up Prisma (Done)
 2. Define models (Done)
 3. Set up Express / Node js (Done)
-4. Set up signup/login
-5. Set up JWTS
+4. Set up signup/login (Done)
+5. Set up JWTS (Done)
 6. Set up routes for actual data
 7. Test with postman
 8. Create react app
