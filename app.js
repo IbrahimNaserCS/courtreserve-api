@@ -40,13 +40,14 @@ app.post(
   "/login",
   passport.authenticate("local", { session: false }),
   (req, res) => {
+    console.log("Entered login route");
     jwt.sign({ user: req.user }, process.env.SECRET_KEY, (err, token) => {
       res.json({ token });
     });
   }
 );
 
-app.post("/signup", async (req, res) => {
+app.post("/signup", async (req, res, next) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     const user = await prisma.user.create({
@@ -55,11 +56,13 @@ app.post("/signup", async (req, res) => {
         password: hashedPassword,
       },
     });
-    res.status(200);
+    res.status(200).send("Added user");
   } catch (err) {
-    res.status(500);
+    next(err);
   }
 });
+
+app.get("/", (req, res) => res.send("Hey"));
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
