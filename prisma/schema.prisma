@@ -21,6 +21,7 @@ model User {
 
 model Court {
   id Int @default(autoincrement()) @unique
+  name String
   reservations Reservation[]
 }
 
@@ -32,5 +33,6 @@ model Reservation {
   username String @unique
   date String
   block String
+  active Boolean
   @@unique([date, block])
 }
