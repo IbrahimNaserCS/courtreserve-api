@@ -46,7 +46,7 @@ app.post(
   }
 );
 
-app.post("/signup", async (req, res, next) => {
+app.post("/signup", async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     const user = await prisma.user.create({
@@ -57,7 +57,7 @@ app.post("/signup", async (req, res, next) => {
     });
     res.status(200);
   } catch (err) {
-    return next(err);
+    res.status(500);
   }
 });
 
