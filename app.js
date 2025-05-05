@@ -3,16 +3,14 @@ const app = express();
 require("dotenv").config();
 const port = process.env.PORT || 3000;
 const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
-const bcrypt = require("bcryptjs");
-const { PrismaClient } = require("@prisma/client");
-const prisma = new PrismaClient();
-const jwt = require("jsonwebtoken");
 const cors = require("cors");
+const userRoutes = require("./routes/userRoutes");
 app.use(cors());
 app.use(express.json());
 app.use(passport.initialize());
+app.use("/users", userRoutes);
 
+/*
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
@@ -61,6 +59,8 @@ app.post("/signup", async (req, res, next) => {
     next(err);
   }
 });
+
+*/
 
 app.get("/", (req, res) => res.send("Hey"));
 
