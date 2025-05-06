@@ -1,12 +1,17 @@
+### Backend
 1. Set up Prisma (Done)
 2. Define models (Done)
 3. Set up Express / Node js (Done)
 4. Set up signup/login (Done)
 5. Set up JWTS (Done)
 6. Set up routes for actual data
-7. Test with postman
-8. Create react app
-9. Create components and put them together
-10. Style it with CSS (Tailwind?)
-11. Test out backend with frontend
-12. Optionally deploy
+7. Authenticate routes
+8. Authorize routes
+9. Test with postman
+### Frontend
+10. Create react app
+11. Create components and put them together
+12. Style it with CSS (Tailwind?)
+### Both
+13. Test out backend with frontend
+14. Optionally deploy
