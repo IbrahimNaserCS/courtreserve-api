@@ -5,7 +5,7 @@
 1. GET /courts 
   - Returns a list of court names along with their ids to be shown on the homepage 
 2. GET /reservations/userid
-  - Returns a list of active reservations with reservation id, court name, and date. 
+  - Returns a list of active reservations for a user with reservation id, court name, and date. 
 3. GET /courts/courtid
   - Returns a list of dates unavailable to make sure React doesn't render those.
 4. POST /reservations
