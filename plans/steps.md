@@ -4,7 +4,7 @@
 3. Set up Express / Node js (Done)
 4. Set up signup/login (Done)
 5. Set up JWTS (Done)
-6. Set up routes for actual data
+6. Set up routes for actual data (Done)
 7. Authenticate routes
 8. Authorize routes
 9. Test with postman
