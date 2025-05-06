@@ -14,25 +14,26 @@ datasource db {
 }
 
 model User {
-  username String @unique
-  password String
+  username     String        @unique
+  password     String
   reservations Reservation[]
 }
 
 model Court {
-  id Int @default(autoincrement()) @unique
-  name String
+  id           Int           @unique @default(autoincrement())
+  name         String
   reservations Reservation[]
 }
 
 model Reservation {
-  id Int @default(autoincrement()) @unique
-  court Court @relation(fields: [courtId], references: [id])
-  courtId Int @unique
-  user User @relation(fields: [username], references: [username])
-  username String @unique
-  date String
-  block String
-  active Boolean
+  id       Int     @unique @default(autoincrement())
+  court    Court   @relation(fields: [courtId], references: [id])
+  courtId  Int     @unique
+  user     User    @relation(fields: [username], references: [username])
+  username String  @unique
+  date     String
+  block    String
+  active   Boolean
+
   @@unique([date, block])
 }
