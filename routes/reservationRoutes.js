@@ -28,11 +28,18 @@ reservationRouter.post("/", verifyToken, async (req, res) => {
             const decoded = authData;
             console.log("Decoded user username is", decoded.user.username);
             console.log()
-            if (decoded.user.username !== req.body.username) {
+            if (!req.body.username) {
+                res.sendStatus(400);
+            }
+            else if (decoded.user.username !== req.body.username) {
                 res.sendStatus(403);
             } else {
-                await addReservation(req.body.courtId, req.body.username, req.body.date);
-                res.sendStatus(200);
+                if (!req.body.courtId || !req.body.date) {
+                    res.sendStatus(400);
+                } else {
+                    await addReservation(req.body.courtId, req.body.username, req.body.date);
+                    res.sendStatus(200);
+                }
             }
         }
     });
@@ -44,7 +51,10 @@ reservationRouter.delete("/:reservationid", verifyToken, async (req, res) => {
             res.sendStatus(403);
         } else {
             const decoded = authData;
-            if (decoded.user.username !== req.body.username) {
+            if (!req.body.username) {
+                res.sendStatus(400);
+            }
+            else if (decoded.user.username !== req.body.username) {
                 res.sendStatus(403);
             } else {
                 await deleteReservation(req.params.reservationid);

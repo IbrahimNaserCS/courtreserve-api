@@ -27,9 +27,13 @@ passport.use(
 
 userRouter.post("/signup", async (req, res, next) => {
   try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    await addUser(req.body.username, hashedPassword);
-    res.status(200).send("Added user");
+    if (!req.body.username || !req.body.password) {
+      res.sendStatus(400);
+    } else {
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+      await addUser(req.body.username, hashedPassword);
+      res.sendStatus(200);
+    }
   } catch (err) {
     next(err);
   }
