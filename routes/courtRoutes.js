@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const courtRouter = Router();
-const { getAllCourts } = require("../controllers/courtController");
+const { getAllCourts, getReservedDates } = require("../controllers/courtController");
 const { verifyToken } = require("../auth/authfunction");
 
 courtRouter.get("/", async (req, res) => {
@@ -9,7 +9,8 @@ courtRouter.get("/", async (req, res) => {
 });
 
 courtRouter.get("/:courtid", async (req, res) => {
-    
+    const reservedDate = await getReservedDates(req.params.courtid);
+    res.json(reservedDate);
 })
 
 module.exports = courtRouter;
