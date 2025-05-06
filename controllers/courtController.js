@@ -13,4 +13,4 @@ async function getAllCourts() {
 
 module.exports = {
     getAllCourts
-}
+};
