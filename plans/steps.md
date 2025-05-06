@@ -7,7 +7,7 @@
 6. Set up routes for actual data (Done)
 7. Authenticate routes (Done)
 8. Authorize routes (Done)
-9. Error handling
+9. Error handling (Done)
 10. Test with postman
 ### Frontend
 10. Create react app
