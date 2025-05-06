@@ -14,7 +14,7 @@ async function getAllCourts() {
 async function getReservedDates(courtId) {
     const dates = await prisma.reservation.findMany({
         where: {
-	    courtId: courtId,
+	    courtId: parseInt(courtId),
 	    active: true
 	},
         select: {

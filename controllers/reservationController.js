@@ -6,13 +6,12 @@ async function getUserReservations(userId) {
         where: {
             username: userId 
         },
-        include: {
-            court: true
-        },
         select: {
             courtId: true,
-            name: true,
-            date: true
+            date: true,
+            court: {
+                select : { name: true }
+            }
         }
     });
     return reservations;
@@ -31,7 +30,7 @@ async function addReservation(courtId, username, date) {
 async function deleteReservation(reservationId) {
     await prisma.reservation.delete({
         where: {
-            id: reservationId
+            id: parseInt(reservationId)
         }
     });
 }
