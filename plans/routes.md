@@ -1,6 +1,6 @@
 # Login/Signup
-1. /login (already created)
-2. /signup (already created)
+1. /login (tested)
+2. /signup (tested)
 # Courts
 1. GET /courts 
   - Returns a list of court names along with their ids to be shown on the homepage 
