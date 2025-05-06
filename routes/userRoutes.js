@@ -46,7 +46,7 @@ userRouter.post(
     jwt.sign({ user: req.user }, process.env.SECRET_KEY, (err, token) => {
       res.json({ token });
     });
-  }
+    }
 );
 
 module.exports = userRouter;
