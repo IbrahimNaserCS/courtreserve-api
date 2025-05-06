@@ -10,7 +10,6 @@ reservationRouter.get("/:userid", verifyToken, async (req, res) => {
             res.sendStatus(403);
         } else {
             const decoded = authData;
-            console.log(decoded);
             if (decoded.user.username !== req.params.userid) {
                 res.sendStatus(403);
             } else {
@@ -26,8 +25,13 @@ reservationRouter.post("/", verifyToken, async (req, res) => {
         if (err) {
             res.sendStatus(403);
         } else {
-            await addReservation(req.body.courtId, req.body.username, req.body.date);
-            res.sendStatus(200);
+            const decoded = authData;
+            if (decoded.user.username !== req.params.userid) {
+                res.sendStatus(403);
+            } else {
+                await addReservation(req.body.courtId, req.body.username, req.body.date);
+                res.sendStatus(200);
+            }
         }
     });
 });
@@ -37,8 +41,13 @@ reservationRouter.delete("/:reservationid", verifyToken, async (req, res) => {
         if (err) {
             res.sendStatus(403);
         } else {
-            await deleteReservation(req.params.reservationid);
-            res.sendStatus(200);
+            const decoded = authData;
+            if (decoded.user.username !== req.params.userid) {
+                res.sendStatus(403);
+            } else {
+                await deleteReservation(req.params.reservationid);
+                res.sendStatus(200);
+            }
         }
     });
 })
