@@ -9,8 +9,14 @@ reservationRouter.get("/:userid", verifyToken, async (req, res) => {
         if (err) {
             res.sendStatus(403);
         } else {
-            const reservations = await getUserReservations(req.params.userid);
-            res.json(reservations);
+            const decoded = authData;
+            console.log(decoded);
+            if (decoded.user.username !== req.params.userid) {
+                res.sendStatus(403);
+            } else {
+                const reservations = await getUserReservations(req.params.userid);
+                res.json(reservations);
+            }
         }
     });
 });
